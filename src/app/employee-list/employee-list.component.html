@@ -1,0 +1,62 @@
+<div class="container mt-5">
+    <h1 class="mb-5" >Employee List</h1>
+       <p> Click To Add Employee Details </p>    
+       <button class="btn btn-primary mb-5" (click)="openModal()">Add</button>
+  
+    <table class="table table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th>Employee Name</th>
+          <th>Contact No</th>
+          <th>Email</th>
+          <th>Address</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let employee of employees">
+          <td>{{ employee.name }}</td>
+          <td>{{ employee.contactNo }}</td>
+          <td>{{ employee.email }}</td>
+          <td>{{ employee.address }}</td>
+        </tr>
+      </tbody>
+    </table>
+  
+    <!-- Modal -->
+    <div *ngIf="isModalOpen" class="modal fade show" style="display: block;">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Add Employee Details</h5>
+
+          </div>
+          <div class="modal-body">
+            <form (ngSubmit)="addEmployee()">
+              <div class="form-group">
+                <label for="empName"></label>
+                <input type="text" placeholder="Employee Name" [(ngModel)]="newEmployee.name" name="empName" class="form-control" required>
+              </div>
+  
+              <div class="form-group">
+                <label for="contactNo"></label>
+                <input type="text" placeholder="Contact No" [(ngModel)]="newEmployee.contactNo" name="contactNo" class="form-control" required>
+              </div>
+  
+              <div class="form-group">
+                <label for="email"></label>
+                <input type="email" placeholder="Email" [(ngModel)]="newEmployee.email" name="email" class="form-control" required>
+              </div>
+  
+              <div class="form-group">
+                <label for="address"></label>
+                <input type="text" placeholder="Address" [(ngModel)]="newEmployee.address" name="address" class="form-control" required>
+              </div>
+  
+              <button type="submit" class="btn btn-success m-3 ">Submit</button>
+              <button type="button" class="btn btn-danger " (click)="closeModal()"> Close</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
